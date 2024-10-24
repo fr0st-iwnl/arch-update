@@ -2,9 +2,12 @@
 
 This repository contains a simple Bash script designed for managing system updates on Arch-based Linux distributions. The script checks for updates in the official repositories, AUR (Arch User Repository), and Flatpak, and provides the user with a summary of available updates. Upon user confirmation, it performs the updates.
 
-
 > [!NOTE]
 > This script was made for my personal use.
+
+## Showcase
+
+![Arch Linux Update Showcase](https://raw.githubusercontent.com/fr0st-iwnl/assets/refs/heads/main/thumbnails/archupdateshowcase.gif)
 
 ## Features
 
