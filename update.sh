@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 
-# Arch-based
 if [ ! -f /etc/arch-release ]; then
     echo "This script only works on Arch-based systems."
     exit 1
 fi
 
-# function to check if a package is installed
 pkg_installed() {
     pacman -Qq "$1" &> /dev/null
 }
 
-# function to perform updates
 update_system() {
     echo "Starting the system update..."
 
@@ -41,8 +38,12 @@ update_system() {
     echo "System update completed."
 }
 
-# check for Official updates
-ofc=$( (while pgrep -x checkupdates > /dev/null ; do sleep 1; done) ; checkupdates | wc -l)
+if pkg_installed pacman-contrib; then
+    ofc=$( (while pgrep -x checkupdates > /dev/null ; do sleep 1; done) ; checkupdates | wc -l)
+else
+    echo "pacman-contrib not installed; please install it to check for updates. Skipping Official updates."
+    ofc="Not checked"
+fi
 
 # Check for AUR updates
 if pkg_installed yay; then
@@ -65,7 +66,6 @@ echo "[Official] $ofc"
 echo "[AUR]      $aur"
 echo "[Flatpak]  $fpk"
 
-# ask user
 read -p "Do you want to update the system? (Y/N): " answer
 if [[ "$answer" =~ ^[Yy]$ ]]; then
     update_system
