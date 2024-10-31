@@ -37,6 +37,13 @@ To use this script, follow these steps:
    cp /path/to/update.sh ~/.local/share/bin/update
    ```
 
+1. **Make `update` executable**  
+   Give the `update` permissions to run.
+
+   ```bash
+   chmod +x ~/.local/share/bin/update
+   ```
+
 **Update Your Shell Configuration:**
 Add the following line to your `~/.bashrc` or `~/.zshrc`:
 
